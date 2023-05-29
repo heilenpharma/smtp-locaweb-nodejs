@@ -2,6 +2,7 @@
 
 function Email (param) {
     param = param || {};
+    this.token      = param.token    || '';
     this.subject    = param.subject || '';
     this.from       = param.from    || '';
     this.to         = param.to      || [];
@@ -12,6 +13,14 @@ function Email (param) {
 }
 
 var method = Email.prototype;
+
+method.addToken = function (token) {
+    this.token = token;
+};
+
+method.getToken = function () {
+    return this.token;
+};
 
 method.addSubject = function (subject) {
     this.subject = subject;

@@ -1,4 +1,3 @@
-require ('dotenv').load();
 // imports
 var request = require ('request'),
     Email = require ('./email.js'),
@@ -6,7 +5,7 @@ var request = require ('request'),
     // request options variable
     options = {
         headers: {
-            'x-auth-token': process.env.TOKEN,
+            'x-auth-token': Email.getToken(),
             'User-Agent': 'locaweb-smtp-nodejs'
         },
         rejectUnauthorized: false,
