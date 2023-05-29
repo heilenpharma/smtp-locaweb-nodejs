@@ -35,13 +35,15 @@ exports.sendMail = function (emailObject) {
   // request options variable
   var options = {
     headers: {
-      "x-auth-token": Email.getToken(),
+      "x-auth-token": emailObject.token,
       "User-Agent": "locaweb-smtp-nodejs",
     },
     rejectUnauthorized: false,
     url: "https://api.smtplw.com.br/v1/messages",
     json: true,
   };
+
+  delete emailObject.token;
 
   var message = options;
   message.body = emailObject;
