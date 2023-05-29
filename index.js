@@ -2,16 +2,6 @@
 var request = require ('request'),
     Email = require ('./email.js'),
     
-    // request options variable
-    options = {
-        headers: {
-            'x-auth-token': Email.getToken(),
-            'User-Agent': 'locaweb-smtp-nodejs'
-        },
-        rejectUnauthorized: false,
-        url: 'https://api.smtplw.com.br/v1/messages',
-        json: true
-    },
     exports = module.exports = {};
 
 // private function to warn about limits
@@ -37,6 +27,17 @@ exports.sendMail = function (emailObject){
     checkLimits (emailObject);
     
     //compose email
+        // request options variable
+    var options = {
+            headers: {
+                'x-auth-token': Email.getToken(),
+                'User-Agent': 'locaweb-smtp-nodejs'
+            },
+            rejectUnauthorized: false,
+            url: 'https://api.smtplw.com.br/v1/messages',
+            json: true
+        },
+    
     var message = options;
     message.body = emailObject;
  
